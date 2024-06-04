@@ -23,26 +23,32 @@
             font-weight: bold;
         }
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 600px;
             margin: 20px auto;
             background-color: #F9F6F0;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
         }
         .image-section {
-            flex: 1;
-            margin-right: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .image-section img {
+            width: 100%;
         }
         .form-section {
-            flex: 1;
+            width: 100%;
         }
         h2 {
             color: #333;
             font-size: 20px;
             border-bottom: 2px solid #333;
             padding-bottom: 5px;
+            text-align: center;
         }
         .form-group {
             margin: 20px 0;
@@ -68,6 +74,8 @@
             color: white;
             border: none;
             cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
         }
         .form-group button:hover {
             background-color: #555;
@@ -75,10 +83,12 @@
         .prediction {
             font-size: 18px;
             margin: 20px 0;
+            text-align: center;
         }
         .note {
             font-size: 14px;
             color: #555;
+            text-align: center;
         }
     </style>
 </head>
@@ -88,7 +98,7 @@
     </header>
     <div class="container">
         <div class="image-section">
-            <img src="cat-paw.png" alt="Cat Paw" style="width: 100%;" />
+            <img src="cat-paw.png" alt="Cat Paw" />
         </div>
         <div class="form-section">
             <h2>预测喵喵下一个流血时间</h2>
