@@ -13,18 +13,24 @@
             padding: 0;
             background-color: #FAF7F3;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         header {
             background-color: #FAF7F3;
             color: black;
-            padding: 10px 20px;
+            padding: 10px;
             text-align: center;
             font-size: 24px;
             font-weight: bold;
+            width: 100%;
         }
         .container {
             width: 90%;
-            max-width: 600px;
+            max-width: 400px;
             margin: 20px auto;
             background-color: #F9F6F0;
             padding: 20px;
@@ -36,19 +42,22 @@
         .image-section {
             width: 100%;
             margin-bottom: 20px;
+            text-align: center;
         }
         .image-section img {
             width: 100%;
+            border-radius: 8px;
         }
         .form-section {
             width: 100%;
+            text-align: center;
         }
         h2 {
             color: #333;
             font-size: 20px;
             border-bottom: 2px solid #333;
             padding-bottom: 5px;
-            text-align: center;
+            margin-bottom: 20px;
         }
         .form-group {
             margin: 20px 0;
@@ -83,12 +92,10 @@
         .prediction {
             font-size: 18px;
             margin: 20px 0;
-            text-align: center;
         }
         .note {
             font-size: 14px;
             color: #555;
-            text-align: center;
         }
     </style>
 </head>
@@ -124,7 +131,7 @@
                 const lastPeriodDate = new Date(lastPeriodInput);
                 const nextPeriodDate = new Date(lastPeriodDate.getTime() + avgCycleLength * 24 * 60 * 60 * 1000);
                 document.getElementById('prediction').textContent = `下一个周期预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
-                document.getElementById('note').textContent = '记得带创可贴哦 :) 喜欢你';
+                document.getElementById('note').textContent = '记得带创可贴哦 :) 喜欢你，记得想我';
             } else {
                 document.getElementById('prediction').textContent = '请先输入上一次流血开始日期。';
                 document.getElementById('note').textContent = '';
