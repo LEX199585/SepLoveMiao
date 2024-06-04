@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>喵喵Period时间预测</title>
+    <title>喵喵Period日期预测</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
 
@@ -128,7 +128,7 @@
             <img src="cat-paw.png" alt="Cat Paw" />
         </div>
         <div class="form-section">
-            <h2>预测喵喵下一个Period时间</h2>
+            <h2>预测喵喵下一个Period日期</h2>
             <div class="form-group">
                 <label for="last-period">输入上一次Period开始日期:</label>
                 <input type="date" id="last-period" />
@@ -186,8 +186,8 @@
             if (lastPeriodInput) {
                 const lastPeriodDate = new Date(lastPeriodInput);
                 const nextPeriodDate = new Date(lastPeriodDate.getTime() + averageCycle * 24 * 60 * 60 * 1000);
-                document.getElementById('prediction').textContent = `下一个周期预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
-                document.getElementById('note').textContent = '记得带创可贴哦 :) 喜欢你，记得想我';
+                document.getElementById('prediction').textContent = `下一个Period预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
+                document.getElementById('note').textContent = '乖乖记得带创可贴哦 :) 喜欢你，记得想我';
             } else {
                 document.getElementById('prediction').textContent = '请先输入上一次Period开始日期。';
                 document.getElementById('note').textContent = '';
