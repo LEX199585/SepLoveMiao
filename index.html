@@ -187,7 +187,7 @@
                 const lastPeriodDate = new Date(lastPeriodInput);
                 const nextPeriodDate = new Date(lastPeriodDate.getTime() + averageCycle * 24 * 60 * 60 * 1000);
                 document.getElementById('prediction').textContent = `下一个Period预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
-                document.getElementById('note').textContent = '乖乖记得带创可贴哦 :) 喜欢你，记得想我';
+                document.getElementById('note').textContent = '乖乖记得带创可贴哦 :) 喜欢你<br>“晓看天色暮看云，行也思君，坐也思君”';
             } else {
                 document.getElementById('prediction').textContent = '请先输入上一次Period开始日期。';
                 document.getElementById('note').textContent = '';
