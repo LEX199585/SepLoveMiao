@@ -97,6 +97,28 @@
             font-size: 14px;
             color: #555;
         }
+        .history-section {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .history-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .history-section ul {
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+        }
+        .history-section li {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -119,12 +141,45 @@
             <div class="prediction" id="prediction"></div>
             <div class="note" id="note"></div>
         </div>
+        <div class="history-section">
+            <h3>历史周期记录</h3>
+            <ul id="history-list"></ul>
+        </div>
     </div>
 
     <script>
-        // 平均周期天数
-        const avgCycleLength = 35.75; // 更改为35.75天
+        // 历史周期数据
+        const historyPeriods = [
+            "2023-08-06", "2023-09-12", "2023-10-16",
+            "2023-11-24", "2023-12-27", "2024-05-08"
+        ];
 
+        // 计算平均周期天数
+        function calculateAverageCycle() {
+            const periodIntervals = [];
+            for (let i = 1; i < historyPeriods.length; i++) {
+                const diffTime = Math.abs(new Date(historyPeriods[i]) - new Date(historyPeriods[i - 1]));
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                periodIntervals.push(diffDays);
+            }
+            return periodIntervals.reduce((a, b) => a + b, 0) / periodIntervals.length;
+        }
+
+        const avgCycleLength = calculateAverageCycle();
+
+        // 显示历史周期记录
+        function displayHistory() {
+            const historyList = document.getElementById('history-list');
+            historyPeriods.forEach(date => {
+                const listItem = document.createElement('li');
+                listItem.textContent = date;
+                historyList.appendChild(listItem);
+            });
+        }
+
+        displayHistory();
+
+        // 预测下一个周期
         function predictPeriod() {
             const lastPeriodInput = document.getElementById('last-period').value;
             if (lastPeriodInput) {
