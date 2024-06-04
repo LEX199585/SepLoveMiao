@@ -130,7 +130,7 @@
         <div class="form-section">
             <h2>预测喵喵下一个Period日期</h2>
             <div class="form-group">
-                <label for="last-period">输入上一次Period开始日期:</label>
+                <label for="last-period">输入上一次Period开始日期（最近是5.8）:</label>
                 <input type="date" id="last-period" />
             </div>
             <div class="form-group">
@@ -189,7 +189,7 @@
                 document.getElementById('prediction').textContent = `下一个Period预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
                 document.getElementById('note').innerHTML = '乖乖记得带创可贴和止疼药哦 :) 喜欢你<br>“晓看天色暮看云，行也思君，坐也思君”';
             } else {
-                document.getElementById('prediction').textContent = '请先输入上一次Period开始日期。';
+                document.getElementById('prediction').textContent = '请先输入上一次Period开始日期（最近是5.8）。';
                 document.getElementById('note').textContent = '';
             }
         }
