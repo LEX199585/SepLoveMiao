@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>喵喵Period时间预测</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
 
         body {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
             margin: 0;
             padding: 0;
             background-color: #FAF7F3;
@@ -17,7 +17,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
         }
         header {
             background-color: #FAF7F3;
@@ -27,6 +27,9 @@
             font-size: 24px;
             font-weight: bold;
             width: 100%;
+        }
+        header img {
+            height: 50px;
         }
         .container {
             width: 90%;
@@ -63,20 +66,17 @@
             margin: 20px 0;
         }
         .form-group label {
-            font-family: 'Roboto', sans-serif;
             font-size: 16px;
             display: block;
             margin-bottom: 5px;
         }
         .form-group input {
-            font-family: 'Roboto', sans-serif;
             font-size: 16px;
             padding: 5px;
             width: 100%;
             box-sizing: border-box;
         }
         .form-group button {
-            font-family: 'Roboto', sans-serif;
             font-size: 16px;
             padding: 10px 20px;
             background-color: #333;
@@ -102,7 +102,6 @@
             margin-top: 20px;
         }
         .history-section h3 {
-            font-family: 'Playfair Display', serif;
             font-size: 18px;
             color: #333;
             margin-bottom: 10px;
@@ -114,7 +113,6 @@
             text-align: center;
         }
         .history-section li {
-            font-family: 'Roboto', sans-serif;
             font-size: 16px;
             color: #333;
             margin-bottom: 5px;
@@ -123,7 +121,7 @@
 </head>
 <body>
     <header>
-        <img src="image.png" alt="Hermès Logo" style="height: 50px;">
+        <img src="image.png" alt="Hermès Logo">
     </header>
     <div class="container">
         <div class="image-section">
