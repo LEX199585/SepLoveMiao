@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Period Prediction</title>
+    <title>喵喵Period日期预测</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
 
@@ -100,22 +100,27 @@
         .history-section {
             width: 100%;
             margin-top: 20px;
-            text-align: center;
         }
         .history-section h3 {
             font-size: 18px;
             color: #333;
             margin-bottom: 10px;
+            text-align: center;
         }
         .history-section img {
-            width: ```html
-100%;
+            width: 100%;
+            max-width: 360px;
+            height: auto;
             margin-top: 10px;
             border-radius: 8px;
         }
-        .history-section p {
-            font-size: 14px;
+        .lstm-results {
+            width: 100%;
+            font-size: 12px;
             color: #555;
+            text-align: left;
+            margin-top: 10px;
+            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -140,15 +145,18 @@
             <div class="note" id="note"></div>
         </div>
         <div class="history-section">
-            <h3>Prediction Details and Chart</h3>
-            <p id="model-details"></p>
+            <h3>Prediction Chart</h3>
             <img src="prediction_chart.png" alt="Prediction Chart">
+        </div>
+        <div class="lstm-results">
+            <h3>LSTM Results</h3>
+            <p id="model-details"></p>
         </div>
     </div>
 
     <script>
         // Average cycle length from LSTM model prediction
-        const averageCycle = 35.48;
+        const averageCycle = 36.30;
 
         // Fetch and display model details
         fetch('model_details.txt')
@@ -161,8 +169,8 @@
             if (lastPeriodInput) {
                 const lastPeriodDate = new Date(lastPeriodInput);
                 const nextPeriodDate = new Date(lastPeriodDate.getTime() + averageCycle * 24 * 60 * 60 * 1000);
-                document.getElementById('prediction').textContent = `Predicted next period start date: ${nextPeriodDate.toISOString().split('T')[0]}`;
-                document.getElementById('note').innerHTML = '记得买卫生巾和止疼药！ :) 喜欢你<br>“晓看天色暮看云，行也思君，坐也思君”';
+                document.getElementById('prediction').textContent = `下一个Period预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
+                document.getElementById('note').innerHTML = '乖乖记得带创可贴和止疼药哦 :) 喜欢你<br>“晓看天色暮看云，行也思君，坐也思君”';
             } else {
                 document.getElementById('prediction').textContent = '请先输入上一次Period开始日期（最近是5.8）。';
                 document.getElementById('note').textContent = '';
