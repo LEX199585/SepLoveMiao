@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>喵喵Period日期预测</title>
+    <title>Period Prediction</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
 
@@ -100,22 +100,22 @@
         .history-section {
             width: 100%;
             margin-top: 20px;
+            text-align: center;
         }
         .history-section h3 {
             font-size: 18px;
             color: #333;
             margin-bottom: 10px;
-            text-align: center;
         }
-        .history-section ul {
-            padding: 0;
-            list-style-type: none;
-            text-align: center;
+        .history-section img {
+            width: ```html
+100%;
+            margin-top: 10px;
+            border-radius: 8px;
         }
-        .history-section li {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 5px;
+        .history-section p {
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
@@ -140,54 +140,29 @@
             <div class="note" id="note"></div>
         </div>
         <div class="history-section">
-            <h3>历史周期记录</h3>
-            <ul id="history-list"></ul>
-            <p id="average-cycle"></p>
+            <h3>Prediction Details and Chart</h3>
+            <p id="model-details"></p>
+            <img src="prediction_chart.png" alt="Prediction Chart">
         </div>
     </div>
 
     <script>
-        // 历史周期数据
-        const historyPeriods = [
-            "2023-08-06", "2023-09-12", "2023-10-16",
-            "2023-11-24", "2023-12-27"
-        ];
+        // Average cycle length from LSTM model prediction
+        const averageCycle = 35.48;
 
-        // 计算平均周期天数
-        function calculateAverageCycle() {
-            const periodIntervals = [];
-            for (let i = 1; i < historyPeriods.length; i++) {
-                const diffTime = Math.abs(new Date(historyPeriods[i]) - new Date(historyPeriods[i - 1]));
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                periodIntervals.push(diffDays);
-            }
-            const averageCycle = periodIntervals.reduce((a, b) => a + b, 0) / periodIntervals.length;
-            return { averageCycle, periodIntervals };
-        }
+        // Fetch and display model details
+        fetch('model_details.txt')
+            .then(response => response.text())
+            .then(text => document.getElementById('model-details').innerText = text);
 
-        const { averageCycle, periodIntervals } = calculateAverageCycle();
-
-        // 显示历史周期记录
-        function displayHistory() {
-            const historyList = document.getElementById('history-list');
-            historyPeriods.forEach((date, index) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${date} ${index > 0 ? `(间隔: ${periodIntervals[index - 1]} 天)` : ''}`;
-                historyList.appendChild(listItem);
-            });
-            document.getElementById('average-cycle').textContent = `平均周期长度: ${averageCycle.toFixed(2)} 天`;
-        }
-
-        displayHistory();
-
-        // 预测下一个周期
+        // Predict next period
         function predictPeriod() {
             const lastPeriodInput = document.getElementById('last-period').value;
             if (lastPeriodInput) {
                 const lastPeriodDate = new Date(lastPeriodInput);
                 const nextPeriodDate = new Date(lastPeriodDate.getTime() + averageCycle * 24 * 60 * 60 * 1000);
-                document.getElementById('prediction').textContent = `下一个Period预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
-                document.getElementById('note').innerHTML = '乖乖记得带创可贴和止疼药哦 :) 喜欢你<br>“晓看天色暮看云，行也思君，坐也思君”';
+                document.getElementById('prediction').textContent = `Predicted next period start date: ${nextPeriodDate.toISOString().split('T')[0]}`;
+                document.getElementById('note').innerHTML = '记得买卫生巾和止疼药！ :) 喜欢你<br>“晓看天色暮看云，行也思君，坐也思君”';
             } else {
                 document.getElementById('prediction').textContent = '请先输入上一次Period开始日期（最近是5.8）。';
                 document.getElementById('note').textContent = '';
