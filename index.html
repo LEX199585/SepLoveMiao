@@ -100,6 +100,7 @@
         .history-section {
             width: 100%;
             margin-top: 20px;
+            text-align: center;
         }
         .history-section h3 {
             font-size: 18px;
@@ -113,14 +114,6 @@
             height: auto;
             margin-top: 10px;
             border-radius: 8px;
-        }
-        .lstm-results {
-            width: 100%;
-            font-size: 12px;
-            color: #555;
-            text-align: left;
-            margin-top: 10px;
-            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -148,20 +141,11 @@
             <h3>Prediction Chart</h3>
             <img src="prediction_chart.png" alt="Prediction Chart">
         </div>
-        <div class="lstm-results">
-            <h3>LSTM Results</h3>
-            <p id="model-details"></p>
-        </div>
     </div>
 
     <script>
         // Average cycle length from LSTM model prediction
         const averageCycle = 33.53;
-
-        // Fetch and display model details
-        fetch('model_details.txt')
-            .then(response => response.text())
-            .then(text => document.getElementById('model-details').innerText = text);
 
         // Predict next period
         function predictPeriod() {
