@@ -112,7 +112,8 @@
             width: 100%;
             max-width: 360px;
             height: auto;
-            margin-top: 10px;
+            margin: 0 auto;
+            display: block;
             border-radius: 8px;
         }
     </style>
@@ -154,7 +155,7 @@
                 const lastPeriodDate = new Date(lastPeriodInput);
                 const nextPeriodDate = new Date(lastPeriodDate.getTime() + averageCycle * 24 * 60 * 60 * 1000);
                 document.getElementById('prediction').textContent = `下一个Period预计开始日期: ${nextPeriodDate.toISOString().split('T')[0]}`;
-                document.getElementById('note').innerHTML = '“寄蜉蝣于天地，渺沧海之一粟”<br>希望大大星空下的小小我们可以拥抱很久';
+                document.getElementById('note').innerHTML = '“寄蜉蝣于天地，渺沧海之一粟”<br>希望星空下的我们可以拥抱很久';
             } else {
                 document.getElementById('prediction').textContent = '请先输入上一次Period开始日期（最近是6.14）。';
                 document.getElementById('note').textContent = '';
